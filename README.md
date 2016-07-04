@@ -4,7 +4,7 @@ Em caso de dúvida, sugestão ou dificuldade junte-se a nós no <b>Grupo do Tele
 Envio de alarmes no ZABBIX pelo Telegram com usuário autenticado com gráficos.<br>
 <!-- O "How to" foi testado no ZABBIX 2.4 e no 3.0 com base em Debian. -->
 
-O "How to" foi testado no ZABBIX 2.4 e no 3.0 e está baseado em Debian/Ubuntu, caso não utilize estas distros procure os pacotes descritos para sua distribuição.
+O "How to" foi testado no ZABBIX 2.4 e no 3.0 e está baseado em Debian/Ubuntu, caso não utilize estas distros procure os pacotes descritos para sua necessidade.
 
 <br>
 <br>
