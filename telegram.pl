@@ -66,12 +66,9 @@ open my $image, '>', $graph or die $!;                                          
 $image->print($png->decoded_content);                                                                                           #
 $image->close;                                                                                                                  #
 #################################################################################################################################
-
-## Decodificando o Assunto do Email como UTF-8
 utf8::decode($ARGV[1]);
 utf8::decode($corpo);
 
-#Telegram
 chdir($script) || die "Não foi possivel localizar o diretório do telegram-cli:$!";
 if (&tipo == 0 || &tipo == 3) {
 				`./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e "send_photo $ARGV[0] $graph $ARGV[1] $corpo"` || die "Não foi possivel executar o telegram-cli:$!";
@@ -80,10 +77,8 @@ else {
 	`./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e "msg $ARGV[0] $ARGV[1] $corpo"` || die "Não foi possivel executar o telegram-cli:$!";
 }
 
-## Excluindo o arquivo (Grafico)
 unlink ("$graph");
 
-## <Login na API do Zabbix> ###########################################################
 sub tipo
 {
 	my $json = {
@@ -113,7 +108,7 @@ sub tipo
 	
 	$response = $client->call("$server_ip/api_jsonrpc.php", $json);
 
-	my $itemtype; # Variável declarada para receber o valor do hostid
+	my $itemtype; 
 	foreach my $get_itemtype (@{$response->content->{result}}) {
 		$itemtype = $get_itemtype->{value_type}
 	}
