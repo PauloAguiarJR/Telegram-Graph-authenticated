@@ -13,7 +13,7 @@ O "How to" foi testado no ZABBIX 2.4 e no 3.0 e está baseado em Debian/Ubuntu, 
 <br>
 Ex:<br>
 <blockquote> <p>Debian / Ubuntu</p> </blockquote>
-<pre>$ sudo apt-get install libreadline-dev libconfig-dev libssl-dev libevent-dev libjansson-dev libpython-dev libpython3-all-dev lua5.2 liblua5.2-dev git unzip make<br></pre>
+<pre>$ sudo apt-get install libreadline-dev libconfig-dev libssl-dev libevent-dev libjansson-dev libpython-dev libpython3-all-dev liblua5.2-dev git unzip make<br></pre>
 
 <pre>$ sudo cpan</pre>
 <pre> cpan[1]> install WWW::Mechanize JSON::RPC::Client</pre>
