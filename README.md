@@ -1,5 +1,5 @@
 # Telegram-Graph-authenticated
-Em caso de dúvida, sugestão ou dificuldade junte-se a nós no <b>Grupo do Telegram</b> <class="noteimportant"><a href="https://telegram.me/joinchat/B7JjiwivOYVKq5gPNDqFSA" class="wikilink2" title="Ingressar no Grupo" rel="nofollow">Gráfico no Email e Telegram</a>.
+Em caso de dúvida, sugestão ou dificuldade junte-se a nós no <b>Grupo do Telegram</b> <class="noteimportant"><a href="https://telegram.me/joinchat/B7Jjiz-ttMgvu3zJKarK2w" class="wikilink2" title="Ingressar no Grupo" rel="nofollow">Gráfico no Email e Telegram</a>.
 
 Envio de alarmes no ZABBIX pelo Telegram com usuário autenticado com gráficos.<br>
 <!-- O "How to" foi testado no ZABBIX 2.4 e no 3.0 com base em Debian. -->
