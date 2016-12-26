@@ -27,32 +27,31 @@ use warnings;
 use HTTP::Cookies;
 use WWW::Mechanize; 
 use JSON::RPC::Client;
-use Data::Dumper;
 use Encode;
 use POSIX;
 
 ## Dados do Zabbix ##############################################################################################################
-my $server_ip  = 'http://127.0.0.1/zabbix'; # URL de acesso ao FRONT com "http://"                                              
-my $user       = 'Admin';                                                                                                       
-my $password   = 'zabbix';                                                                                                      
-my $script     = '/etc/zabbix/scripts/telegram';                                                                                
-my $client     = new JSON::RPC::Client;                                                                                         
-my ($json, $response, $authID);                                                                                                  
+my $server_ip  = 'http://127.0.0.1/zabbix'; # URL de acesso ao FRONT com "http://"
+my $user       = 'Admin';
+my $password   = 'zabbix';
+my $script     = '/etc/zabbix/scripts/telegram';
+my $client     = new JSON::RPC::Client;
+my ($json, $response, $authID);
 #################################################################################################################################
 
 ## Configuracao do Grafico ######################################################################################################
-#my $color   = '00C800'; # Cor do grafico em Hex. (sem tralha)
+my $color   = '00C800'; # Cor do grafico em Hex. (sem tralha)
+my $period  = 3600; # 1 hora em segundos
 my $height  = 200;  # Altura
-my $width   = 900;  # Largura
-my $stime   = strftime("%Y%m%d%H%M%S", localtime( time-3600 )); # Hora inicial do grafico [time-3600 = 1 hora atras]
+my $width   = 900;  # Largura   
+my $stime   = strftime("%Y%m%d%H%M%S", localtime( time-3600 )); # Hora inicial do grafico [time-3600 = 1 hora atras]         
 #################################################################################################################################
 
-## Separando argumentos #########################################################################################################
-my ($itemname, $eventid, $itemid, $color, $period, $body) = split /\#/, $ARGV[2], 6;                                                     
-#################################################################################################################################
-$body =~ s/\n//g;
-$body =~ s/\\n\s+/\\n/g;
-$eventid =~ s/^\s+//;
+## Configuracao do Grafico ######################################################################################################
+my $itemid     = '23316';
+my $subject    = 'ALARME';
+my $itemname   = 'MEMORIA DISPONIVEL';
+my $body       = 'Teste de envio';
 #################################################################################################################################
 my $graph = "/tmp/$itemid.png";
 
@@ -69,24 +68,15 @@ open my $image, '>', $graph or die $!;
 $image->print($png->decoded_content);
 $image->close;
 #################################################################################################################################
-utf8::decode($ARGV[1]);
+utf8::decode($subject);
 utf8::decode($body);
 
-my $valor;
 chdir($script) || die "Não foi possivel localizar o diretório do telegram-cli:$!";
 if (&tipo == 0 || &tipo == 3) {
-	$valor = `./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e 'send_photo $ARGV[0] $graph "$ARGV[1] $body"'` || die "Não foi possivel executar o telegram-cli:$!";
-        unless (grep (m/FAIL/, $valor)) {
-		&ack; 
-		&logout;
-	}
+				`./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e "send_photo $ARGV[0] $graph $subject $body"` || die "Não foi possivel executar o telegram-cli:$!";
 }
 else {
-        $valor = `./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e 'msg $ARGV[0] "$ARGV[1] $body"'` || die "Não foi possivel executar o telegram-cli:$!";
-        unless (grep (m/FAIL/, $valor)) {
-		&ack; 
-		&logout;
-	}
+	`./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e "msg $ARGV[0] $subject $body"` || die "Não foi possivel executar o telegram-cli:$!";
 }
 
 unlink ("$graph");
@@ -103,8 +93,7 @@ sub tipo {
   	};
 
 	$response = $client->call("$server_ip/api_jsonrpc.php", $json);
-	#print Dumper ($response);
-	
+
 	$authID = $response->content->{'result'};
 
 	$itemid =~ s/^\s+//;
@@ -121,38 +110,11 @@ sub tipo {
   	};
 	$response = $client->call("$server_ip/api_jsonrpc.php", $json);
 
-	my $itemtype; 
+	my $itemtype;
 	foreach my $get_itemtype (@{$response->content->{result}}) {	
 		$itemtype = $get_itemtype->{value_type}
 	}
 	return $itemtype;
-}
-
-sub ack {
-	$json = {
-		jsonrpc => '2.0',
-		method  => 'event.acknowledge',
-		params  => {
-			eventids  => $eventid,
-			message => "Telegram enviado com sucesso para $ARGV[0]"
-		},
-		auth => $authID,
-		id => 3
-	};
-
-	$response = $client->call("$server_ip/api_jsonrpc.php", $json);
-	#print Dumper ($response);
-}
-
-sub logout {
-	$json = {
-   		jsonrpc => '2.0',
-		method => 'user.logout',
-		params => [],
-		id => 4,
-		auth => $authID
-  	};
-	$client->call("$server_ip/api_jsonrpc.php", $json);
 }
 
 exit;
