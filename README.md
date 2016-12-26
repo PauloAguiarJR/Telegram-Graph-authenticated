@@ -1,38 +1,51 @@
 # Telegram-Graph-authenticated
-Em caso de dúvida, sugestão ou dificuldade junte-se a nós no <b>Grupo do Telegram</b> <class="noteimportant"><a href="https://telegram.me/joinchat/B7Jjiz-ttMgvu3zJKarK2w" class="wikilink2" title="Ingressar no Grupo" rel="nofollow">Gráfico no Email e Telegram</a>.
+Em caso de dúvida, sugestão ou dificuldade junte-se a nós no <b>Grupo do Telegram</b> <class="noteimportant"><a href="https://telegram.me/joinchat/B7JjiwivOYVKq5gPNDqFSA" class="wikilink2" title="Ingressar no Grupo" rel="nofollow">Gráfico no Email e Telegram</a>.
 
 Envio de alarmes no ZABBIX pelo Telegram com usuário autenticado com gráficos.<br>
-<!-- O "How to" foi testado no ZABBIX 2.4 e no 3.0 com base em Debian. -->
+<!-- O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x e 7. -->
 
-O "How to" foi testado no ZABBIX 2.4 e no 3.0 e está baseado em Debian/Ubuntu, caso não utilize estas distros procure os pacotes descritos para sua necessidade.
+O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x e 7, caso não utilize estas distros procure os pacotes descritos para sua necessidade.
 
 <br>
 <br>
 
-<b>1 – </b> Baixar os módulos abaixo:
+<b>1 – </b> Executar os comandos abaixo de acordo com sua distro:
 <br>
 Ex:<br>
-<blockquote> <p>Debian / Ubuntu</p> </blockquote>
-<pre>$ sudo apt-get install libreadline-dev libconfig-dev libssl-dev libevent-dev libjansson-dev libpython-dev libpython3-all-dev liblua5.2-dev git unzip make<br></pre>
+<blockquote> <p>Debian/Ubuntu</p> </blockquote>
+<b>1.1a </b><pre>$ sudo apt-get install libreadline-dev libconfig-dev libssl-dev libevent-dev libjansson-dev libpython-dev libpython3-all-dev liblua5.2-0 git unzip make<br></pre>
 
-<pre>$ sudo cpan</pre>
-<pre> cpan[1]> install WWW::Mechanize JSON::RPC::Client</pre>
-Depois “exit” para sair.
+<!--<b>1.2a </b><pre>$ sudo cpan</pre>
+<b>1.3a </b><pre> cpan[1]> install WWW::Mechanize JSON::RPC::Client</pre>
+<b>1.4a </b>Depois “exit” para sair. -->
 
 
-<!--<blockquote> <p>CentOS 6.x e 7</p> </blockquote>
-<pre>yum install perl-WWW-Mechanize perl-MIME-Lite perl-JSON-RPC</pre>
 <blockquote> <p>CentOS 6.x e 7</p> </blockquote>
-<pre>sudo yum install epel-release</pre>
-<pre>sudo yum install telegram-cli.x86_64 openssl-devel libconfig-devel readline-devel git unzip make perl-WWW-Mechanize perl-MIME-Lite perl-JSON-RPC </pre> -->
+<b>1.1b </b><pre>sudo yum install epel-release</pre>
+<b>1.2b </b><pre>sudo yum -y update</pre>
+<b>1.3b </b><pre>sudo yum install openssl098e.x86_64 python34-libs libconfig-devel readline-devel libevent-devel lua-devel python-devel unzip git make</pre>
+<!--<b>1.4b </b><pre>$ sudo cpan</pre>
+<b>1.5b </b><pre> cpan[1]> install WWW::Mechanize JSON::RPC::Client</pre>
+<b>1.6b </b>Depois “exit” para sair. -->
+<b>1.4b </b><pre>ln -s /usr/lib64/liblua-5.1.so /usr/lib64/liblua5.2.so.0 ; ln -s /usr/lib64/libcrypto.so.0.9.8e /usr/lib64/libcrypto.so.1.0.0</pre>
 
-<b>2 – </b> Faça o download do script <code>“telegram.pl“</code> e dos arquivos necessários através do comando:
+<!--<pre> sudo yum install openssl098e.x86_64 python34-libs libconfig-devel readline-devel libevent-devel lua-devel python-devel unzip git make perl-WWW-Mechanize perl-MIME-Lite perl-JSON-RPC </pre>-->
+
+<br>
+<b>2 – </b>Depois faça o download do módulos abaixo:
+<br>
+<br>
+<b>2.1 </b><pre>$ sudo cpan</pre>
+<b>2.2 </b><pre> cpan[1]> install WWW::Mechanize JSON::RPC::Client</pre>
+<b>2.3 </b><pre>Depois “exit” para sair. </pre>
+
+<b>3 – </b> Faça o download do projeto através do comando:
 <pre>git clone https://github.com/sansaoipb/Telegram-Graph-authenticated</pre>
 
 Ao final do download execute os comandos abaixo:
 <pre>cd Telegram-Graph-authenticated ; unzip telegram.zip ; sudo rm -rf README.md ; sudo rm -rf telegram.zip ; cd telegram ; sudo chmod +x telegram-cli ; cd ..</pre>
 
-Copie o script e a pasta para a pasta de scripts do ZABBIX:
+Copie o script e os arquivos para a pasta de scripts do ZABBIX:
 <pre>sudo cp -R telegram* PASTA_DE_SCRIPT_DO_ZABBIX</pre>
 <b>OBS:</b><br>
 <b>1 – </b> Localize onde fica a pasta de script e mude a expressão <code>“PASTA_DE_SCRIPT_DO_ZABBIX”</code> no comando acima de copia.
@@ -55,14 +68,21 @@ Para iniciarmos a configuração de envio, é preciso logar pela primeira vez ma
 Será redirecionado para o console da ferramenta, indicado por um “>”, aguarde até que o texto <code>phone number</code> apareça, depois digite o número de telefone que está cadastrado no telegram, no formato +552244448888 (prefixo para o Brasil, DDD e número), depois que der “Enter” e receberá um código por SMS e no aplicativo <i>(no desktop, no celular ou na versão web, basta estar logado)</i>.
 O comando <code>help</code> lista todos os comandos disponíveis, os comandos <code>contact_list</code> e <code>dialog_list</code> carregam sua lista de contatos e as conversas atuais, todos os comandos tem autocomplete usando o TAB.
 
-Para configurarmos o zabbix a enviar mensagens para usuários ou grupos, execute <code>user_info</code> ou <code>chat_info</code> seguido do nome do contato ou do grupo conforme está na sua agenda, e pegue o ID que aparecerá (os nomes de usuários também tem autocomplete). 
+Para configurarmos o zabbix a enviar mensagens para usuários ou grupos, é necessário executar os comandos <code>user_info</code> ou <code>chat_info</code> seguido do nome do contato ou do grupo conforme está na sua agenda, pegue o “ID” ou o “nome” que aparecerá (os nomes de usuários também tem autocomplete). 
+
+<b>OBS:</b><br>
+<b>1 – </b> Se o escolher utilizar o nome cadastrado, precisa atentar a alguns pontos: <br>
+<b>a) – </b> Caso tenha sobrenome, é necessário ter underscore (_) entre eles; <br>
+<b>b) – </b> O nome não pode conter acentos, no caso abaixo, se meu nome estivesse com “~” como “Sansão” não funcionaria e eu precisaria ter cadastrado sem ele (assim como fiz);
 
 <b>Ex:</b><br>
-<img src="https://lh3.googleusercontent.com/-LuDCum9gPPo/V3nNSlyr3JI/AAAAAAAAI5Q/fGqNP7E8u3sb0gTD-6Qza3GacVIySqanwCCo/s404/user_info.JPG"/><br><br>
+<img src="https://lh3.googleusercontent.com/ZEivFtEiU-_ntgKIi-HYQo92nwSqHPj7VAckE_8TjrCCU_lqn4YX1VT29guJn-WREsOSo-s25TRTb5XoLZLNWtmi5CIHQRK-C8JuAYC81gRR8lsjSkep2pAQQ6wCyS8K9Fxh9aoshF7WapjfEq7lzfwlnRrZe2IV8UuhRDUYtSJrbgJiS3YLDQqVDPWNXyF9AEXCP82QDH7b81PuHXVoDR2PKy-X34ZJlYgKcegWE14moFete989JDdhu80Y7H7RVs6RakRwdscJqo3S8t5DWL_wVCPKXWzGUy9KiHXy870ueCDwsdprf7GfBJ-Mprg3wUSVzCSTk6-R3NCG1UcxwM9XBWqVI-RIvWFGclVp4ha0DeORa_31C8r9E-hLI41peXjnSZIRscrDjCZUrC8uh1nqJjFvPh980ZdiiYakt_DwA5EysmML7mcKKiLw1mqSZwbOKcamhDhyRH9367K3a9DSnMzyymwW-w7NCc0cZ6PDT7fUxcR5UBNorHelOSXDck7ugurlwbuaM7g6qs01gF9ZpuQ4QQrMXy4ACCr7Q6pRRSBfv4EympUGP0M3x3MaR_PmTVvh_R10syvn0fH-elzw1Z5aws9uRbd_6FpSm-rp_F2T=w411-h69-no"/><br><br>
 
-Para receber mensagem, preciso cadastrar com esta estrutura: <code>user#129131403</code>
+Para enviar a mensagem, é preciso usar o ID ou o nome, conforme as estruturas abaixo:<br>
+<code>user#129131403</code><br>
+<code>Sansao_Simonton</code><br>
 
-Agora o telegram-cli está configurado para utilizar a sua conta. Podemos sair do console dele digitando <code>safe_quit</code> ou <code>quit</code>
+Agora o telegram-cli está configurado para utilizar a sua conta. Podemos sair do console dele digitando <code>safe_quit</code> <i>(se já tiver aberto em outro momento)</i> ou <code>quit</code><i>(caso seja a primeira vez que estiver logando)</i>
 
 
 <h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a> OBS IMPORTANTE:</h3>
@@ -83,14 +103,22 @@ Por limitação da aplicação <code><i>“telegram-cli”</i></code>, ainda nã
 
 <h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>Comando para teste</h3>
 
-A estrutura do comando para realização de teste é:<br>
-<b>Script, user#ID, Assunto, Nome-do-Item#ID-do-Item#CorpoDaMsg.</b><br>
-Ex:<br>
-<pre>./telegram.pl user#123456789 "Assunto" "NomeDoItem#123456#CorpoDaMsg"<br></pre>
-<b>OBS:</b><br>
-<b>1 – </b>”123456” é um número fictício para exemplificar, busque um ItemID válido em seu ambiente para realização do teste;<br>
-<b>2 – </b>”123456789” é um número fictício para exemplificar, busque um ID válido em seu ambiente com os comandos já passados para realização do teste;<br>
-<b>3 – </b>"user#123456789" quando for usuário será “user#”, quando for grupo será “chat#” seguido do respectivo ID<br>
+Script para realização do teste:<br>
+<b>Script, user#ID ou Nome.</b><br>
+Exs:<br>
+<pre>./telegram-teste.pl user#123456789</pre>
+ou
+<br>
+ <pre>./telegram-teste.pl Nome_Sobrenome</pre><br>
+ <b>OBS:</b><br>
+
+<b>1 – </b>” user#123456789” e “Nome_Sobrenome” são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido em seu ambiente com os comandos já passados para realização do teste;<br>
+<b>2 – </b>Se optar por usar o ID, como "user#123456789", “user#” é para quando for usuário, quando for grupo será “chat#” seguido do respectivo ID<br>
+
+
+<!--<b>1 – </b>”123456” é um número fictício para exemplificar, busque um ItemID válido em seu ambiente para realização do teste;<br>
+<b>2 – </b>”123456789” é um número fictício para exemplificar, busque um ID válido em seu ambiente com os comandos já passados para realização do teste;<br>-->
+
 
 #Configurando o envio
 
@@ -110,16 +138,21 @@ Com o script adicionado no local indicado acima, precisamos realizar algumas con
 
 <h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>Criando a Ação:</h3>
 
-Existe somente uma exigência, a “<i>Mensagem Padrão</i>” na aba <b>“<u>Ação</u>”</b>, por uma limitação da aplicação, as macros/variáveis abaixo ilustradas, devem permanecer uma ao lado da outra separadas com <code>“tralha”(#)</code>, depois da <i>“segunda #”</i>, pode ser adicionado o que desejar, como abaixo
+A “<i>Mensagem Padrão</i>” na aba <b>“<u>Ação</u>”</b> está sendo executada no formato “HTML”, então você pode realizar a formatação que desejar, somente com uma “exigência”, por uma limitação da aplicação, as macros/variáveis principais abaixo ilustradas, devem permanecer uma ao lado da outra separadas com <code>“tralha”(#)</code>, depois da <i>“terceira #”</i>, pode ser adicionado o que desejar, como abaixo
 <br>
 <h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>Imagem da Mensagem na Ação:</h3>
 
-<img src="https://lh3.googleusercontent.com/-WMFZj7-U5HY/V3a0YQ63WOI/AAAAAAAAI38/kWKdgzr6haIsI8RW89cHbA79Wec_j7jzQCCo/s505/TelegramAction.JPG"/><br><br>
+<img src="https://lh3.googleusercontent.com/RuDq_CboE2tNdieWYN84JvRfhFIms4umWOzHDOM5hgANwWX-OvyVcuqeDUrZLhq3nlrTY-GQFPSpFg=w452-h157-rw"/><br><br>
 
 <blockquote> Modelo Mensagem Padrão</blockquote>
-<pre>{ITEM.NAME}#{ITEM.ID}#Último valor = {ITEM.LASTVALUE}.</pre>
+<pre>
+{ITEM.NAME}#{EVENT.ID}#{ITEM.ID}#00C800#3600#\n
+IP/DNS: {HOST.CONN}\n
+Último valor = {ITEM.LASTVALUE}\n
+</pre>
 
-
+<b>OBS:</b><br>
+<i><b>”00C800”</b></i> é a cor da linha em Hex. (sem tralha) e <b><i>”3600”</b></i> é o período do gráfico em segundo.
 <h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>Resultado da linha de teste:</h3>
 
 <img src="https://lh3.googleusercontent.com/-jij9affl1v0/V3a-HZEQ0eI/AAAAAAAAI4I/X8_XdC7760A94B22ULi6_ANwgW0Ni3YPgCCo/s687/TelegramResult.JPG"/>
@@ -130,5 +163,5 @@ Existe somente uma exigência, a “<i>Mensagem Padrão</i>” na aba <b>“<u>A
 
 1 – Este script é para agilizar a analise e ficar visualmente mais agradável o recebimento dos alarmes.<br><br>
 2 – O script realiza uma consulta API mais ampla, e detecta automaticamente se o item é de caractere/log/texto, e não envia o gráfico "sem dados", somente o texto. <br><br>
-3 – Nos nomes de contatos e grupos, espaços são transformados em underline (_), tralha/jogo da velha (#), arrobas (@) e contatos com mesmo nome tem um #1acrescentado ao nome (exemplo: Gnu#1, Gnu#2).
+3 – Nos nomes de contatos e grupos, espaços são transformados em underscore (_), tralha/jogo da velha (#), arrobas (@) e contatos com mesmo nome tem um <i>“#1”</i>  acrescentado ao nome (exemplo: Gnu#1, Gnu#2).
 
