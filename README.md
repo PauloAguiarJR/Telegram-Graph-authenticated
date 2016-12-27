@@ -138,7 +138,7 @@ Com o script adicionado no local indicado acima, precisamos realizar algumas con
 
 <h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>Criando a Ação:</h3>
 
-A “<i>Mensagem Padrão</i>” na aba <b>“<u>Ação</u>”</b> está sendo executada no formato “HTML”, então você pode realizar a formatação que desejar, somente com uma “exigência”, por uma limitação da aplicação, as macros/variáveis principais abaixo ilustradas, devem permanecer uma ao lado da outra separadas com <code>“tralha”(#)</code>, depois da <i>“terceira #”</i>, pode ser adicionado o que desejar, como abaixo
+A “<i>Mensagem Padrão</i>” na aba <b>“<u>Ação</u>”</b> existe somente com uma “exigência”, a primeira linha deve permanecer com as macros/variáveis abaixo ilustradas (<i>as macros/variáveis <b>entre as "#" </b></i>), podendo editar da segunda linha em diante. 
 <br>
 <h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>Imagem da Mensagem na Ação:</h3>
 
@@ -152,7 +152,7 @@ IP/DNS: {HOST.CONN}\n
 </pre>
 
 <b>OBS:</b><br>
-<i><b>”00C800”</b></i> é a cor da linha em Hex. (sem tralha) e <b><i>”3600”</b></i> é o período do gráfico em segundo.
+<i><b>”00C800”</b></i> é a cor da linha (verde) em Hex. sem tralha, e <b><i>”3600”</b></i> é o período do gráfico (1h) em segundo.
 <h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>Resultado da linha de teste:</h3>
 
 <img src="https://lh3.googleusercontent.com/-jij9affl1v0/V3a-HZEQ0eI/AAAAAAAAI4I/X8_XdC7760A94B22ULi6_ANwgW0Ni3YPgCCo/s687/TelegramResult.JPG"/>
@@ -161,7 +161,7 @@ IP/DNS: {HOST.CONN}\n
 
 #Conclusão
 
-1 – Este script é para agilizar a analise e ficar visualmente mais agradável o recebimento dos alarmes.<br><br>
-2 – O script realiza uma consulta API mais ampla, e detecta automaticamente se o item é de caractere/log/texto, e não envia o gráfico "sem dados", somente o texto. <br><br>
+1 – Este script é para agilizar a análise e ficar visualmente mais agradável o recebimento dos alarmes.<br><br>
+2 – O script realiza uma consulta API mais ampla, detecta automaticamente se o item é de caracter/log/texto, e não envia o gráfico "sem dados" somente o texto, ele dá "ack" no evento e informa quem foi notificado naquela ação. <br><br>
 3 – Nos nomes de contatos e grupos, espaços são transformados em underscore (_), tralha/jogo da velha (#), arrobas (@) e contatos com mesmo nome tem um <i>“#1”</i>  acrescentado ao nome (exemplo: Gnu#1, Gnu#2).
 
