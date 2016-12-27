@@ -52,8 +52,9 @@ Copie o script e os arquivos para a pasta de scripts do ZABBIX:
 a pasta pode estar em 2 locais dependendo da forma que você instalou o zabbix (compilando ou por pacote) “/usr/local/share/zabbix/alertscripts/” ou “/usr/lib/zabbix/alertscripts/”.<br>
 Caso prefira mudar o local padrão, você pode apontar uma de sua preferência dentro do <code>“zabbix_server.conf”</code>, edite a linha <code>“AlertScriptsPath=”</code> , descomente-a e aponte o novo local que o front irá executar os scripts e dê um restart no serviço do server <code>(zabbix-server)</code>
 No meu caso, eu editei para “/etc/zabbix/scripts” e será desta forma que ilustraremos nossos próximos passos.<br>
+
 <b>2 – </b> Vá até a “raiz” (PASTA_DE_SCRIPT_DO_ZABBIX) e execute os comandos abaixo para conceder permissões aos arquivos:
-<pre>sudo chmod +x telegram.pl ; sudo chown -R zabbix. telegram*</pre>
+<pre>sudo chmod +x *.pl ; sudo chown -R zabbix. telegram*</pre>
 
 Dentro do diretório <i>“telegram”</i>, edite o arquivo <code>telegram.config</code> na linha abaixo de acordo com sua estrutura:
 
