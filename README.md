@@ -113,7 +113,7 @@ ou
  <pre>./telegram-teste.pl Nome_Sobrenome</pre><br>
  <b>OBS:</b><br>
 
-<b>1 – </b>” user#123456789” e “Nome_Sobrenome” são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido em seu ambiente com os comandos já passados para realização do teste;<br>
+<b>1 – </b>"user#123456789" e “Nome_Sobrenome” são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido em seu ambiente com os comandos já passados para realização do teste;<br>
 <b>2 – </b>Se optar por usar o ID, como "user#123456789", “user#” é para quando for usuário, quando for grupo será “chat#” seguido do respectivo ID<br>
 
 
