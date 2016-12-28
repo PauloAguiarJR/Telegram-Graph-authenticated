@@ -32,12 +32,12 @@ use Encode;
 use POSIX;
 
 ## Dados do Zabbix ##############################################################################################################
-my $server_ip  = 'http://127.0.0.1/zabbix'; # URL de acesso ao FRONT com "http://"                                              
-my $user       = 'Admin';                                                                                                       
-my $password   = 'zabbix';                                                                                                      
-my $script     = '/etc/zabbix/scripts/telegram';                                                                                
-my $client     = new JSON::RPC::Client;                                                                                         
-my ($json, $response, $authID);                                                                                                  
+my $server_ip  = 'http://127.0.0.1/zabbix'; # URL de acesso ao FRONT com "http://"
+my $user       = 'Admin';
+my $password   = 'zabbix';
+my $script     = '/etc/zabbix/scripts/telegram';
+my $client     = new JSON::RPC::Client;
+my ($json, $response, $authID);
 #################################################################################################################################
 
 ## Configuracao do Grafico ######################################################################################################
@@ -48,7 +48,7 @@ my $stime   = strftime("%Y%m%d%H%M%S", localtime( time-3600 )); # Hora inicial d
 #################################################################################################################################
 
 ## Separando argumentos #########################################################################################################
-my ($itemname, $eventid, $itemid, $color, $period, $body) = split /\#/, $ARGV[2], 6;                                                     
+my ($itemname, $eventid, $itemid, $color, $period, $body) = split /\#/, $ARGV[2], 6;
 #################################################################################################################################
 $body =~ s/\n//g;
 $body =~ s/\\n\s+/\\n/g;
@@ -106,7 +106,6 @@ sub tipo {
 	#print Dumper ($response);
 	
 	$authID = $response->content->{'result'};
-
 	$itemid =~ s/^\s+//;
 
 	$json = {
@@ -120,7 +119,8 @@ sub tipo {
 		id => 2
   	};
 	$response = $client->call("$server_ip/api_jsonrpc.php", $json);
-
+	#print Dumper ($response);
+	
 	my $itemtype; 
 	foreach my $get_itemtype (@{$response->content->{result}}) {	
 		$itemtype = $get_itemtype->{value_type}
