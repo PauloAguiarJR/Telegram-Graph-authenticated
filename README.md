@@ -124,7 +124,7 @@ ou
 <!--<b>1 – </b>”123456” é um número fictício para exemplificar, busque um ItemID válido em seu ambiente para realização do teste;<br>
 <b>2 – </b>”123456789” é um número fictício para exemplificar, busque um ID válido em seu ambiente com os comandos já passados para realização do teste;<br>-->
 
-#Configurando o envio:
+# Configurando o envio:
 
 Com o script adicionado no local indicado acima, precisamos realizar algumas configurações no Front do ZABBIX, no <i>"Tipo de Mídia"</i>, (em Administração  > Tipo de Mídia) e a <i>"Ação"</i> (em Configuração  > Ações).
 
