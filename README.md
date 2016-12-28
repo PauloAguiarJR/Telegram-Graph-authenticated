@@ -116,15 +116,18 @@ Script para realização do teste:<br>
 Exs:<br>
 <pre>./telegram-teste.pl user#123456789</pre>
 ou
-<br>
-<pre>./telegram-teste.pl Nome_Sobrenome</pre><br>
+<pre>./telegram-teste.pl Nome_Sobrenome</pre>
 
+<b>OBS:</b><br>
+<b>1 – </b>"user#123456789" e "Nome_Sobrenome" são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido em seu ambiente com os comandos já passados para realização do teste;<br>
+<b>2 – </b>Se optar por usar o ID, como "user#123456789", “user#” é para quando for usuário, quando for grupo será “chat#” seguido do respectivo ID<br><br>
 
 #Configurando o envio:
 
 Com o script adicionado no local indicado acima, precisamos realizar algumas configurações no Front do ZABBIX, no <i>"Tipo de Mídia"</i>, (em Administração  > Tipo de Mídia) e a <i>"Ação"</i> (em Configuração  > Ações).
 
 <h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>Tipo de Mídia</h3>
+
 <blockquote> <p>Zabbix 2.4</p> </blockquote>
 <img src="https://lh3.googleusercontent.com/-cMFxmglWDvA/V3a0YmX_apI/AAAAAAAAI38/hYdudPHkIL4mUxEKjCw7tjEPUEfz1ormgCCo/s425/TelegramType2.4.JPG"/><br><br>
 <blockquote> <p>Zabbix 3.0</p> </blockquote>
@@ -166,3 +169,6 @@ IP/DNS: {HOST.CONN}\n
 1 – Este script é para agilizar a análise e ficar visualmente mais agradável o recebimento dos alarmes.<br><br>
 2 – O script realiza uma consulta API mais ampla, detecta automaticamente se o item é de caracter/log/texto, e não envia o gráfico "sem dados" somente o texto, ele dá "ack" no evento e informa quem foi notificado naquela ação. <br><br>
 3 – Nos nomes de contatos e grupos, espaços são transformados em underscore (_), tralha/jogo da velha (#), arrobas (@) e contatos com mesmo nome tem um <i>“#1”</i>  acrescentado ao nome (exemplo: Gnu#1, Gnu#2).
+
+#Configurando o envio:
+
