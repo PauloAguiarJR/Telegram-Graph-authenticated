@@ -122,9 +122,9 @@ ou
 <b>1 – </b>"user#123456789" e “Nome_Sobrenome” são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido em seu ambiente com os comandos já passados para realização do teste;<br>
 <b>2 – </b>Se optar por usar o ID, como "user#123456789", “user#” é para quando for usuário, quando for grupo será “chat#” seguido do respectivo ID<br><br>
 
-
 <!--<b>1 – </b>”123456” é um número fictício para exemplificar, busque um ItemID válido em seu ambiente para realização do teste;<br>
 <b>2 – </b>”123456789” é um número fictício para exemplificar, busque um ID válido em seu ambiente com os comandos já passados para realização do teste;<br><br>-->
+
 
 
 #Configurando o envio:
