@@ -9,6 +9,8 @@ O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x
 <br>
 <br>
 
+#Requisitos:
+
 <b>1 – </b> Executar os comandos abaixo de acordo com sua distro:
 <br>
 Ex:<br>
@@ -95,7 +97,7 @@ Agora o telegram-cli está configurado para utilizar a sua conta. Podemos sair d
 <b>2 – </b> Por limitação da aplicação <code><i>“telegram-cli”</i></code>, ainda não é possível enviar mensagem para <b>SUPERGRUPOS</b>, pois não houve atualização depois desta novidade
 
 
-#Edite os parâmetros do script:
+#Edite os parâmetros:
 
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="checked" disabled="disabled"><font><font class=""> “my $server_ip” = 'http://127.0.0.1/zabbix' - URL de acesso ao FRONT com "http://" </font></font></li>
@@ -118,11 +120,12 @@ ou
 <pre>./telegram-teste.pl Nome_Sobrenome</pre><br>
 <b>OBS:</b><br>
 <b>1 – </b>"user#123456789" e “Nome_Sobrenome” são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido em seu ambiente com os comandos já passados para realização do teste;<br>
-<b>2 – </b>Se optar por usar o ID, como "user#123456789", “user#” é para quando for usuário, quando for grupo será “chat#” seguido do respectivo ID<br>
+<b>2 – </b>Se optar por usar o ID, como "user#123456789", “user#” é para quando for usuário, quando for grupo será “chat#” seguido do respectivo ID<br><br>
 
 
 <!--<b>1 – </b>”123456” é um número fictício para exemplificar, busque um ItemID válido em seu ambiente para realização do teste;<br>
-<b>2 – </b>”123456789” é um número fictício para exemplificar, busque um ID válido em seu ambiente com os comandos já passados para realização do teste;<br>-->
+<b>2 – </b>”123456789” é um número fictício para exemplificar, busque um ID válido em seu ambiente com os comandos já passados para realização do teste;<br><br>-->
+
 
 #Configurando o envio:
 
