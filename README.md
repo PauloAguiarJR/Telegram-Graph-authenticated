@@ -103,8 +103,8 @@ Agora o telegram-cli está configurado para utilizar a sua conta. Podemos sair d
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="checked" disabled="disabled"><font><font class=""> “my $server_ip” = 'http://127.0.0.1/zabbix' - URL de acesso ao FRONT com "http://" </font></font></li>
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="checked" disabled="disabled"><font><font class=""> “my $usuario”   = 'Admin';</font></font></li>
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="checked" disabled="disabled"><font><font class=""> “my $senha”     = 'zabbix';</font></font></li>
-<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="checked" disabled="disabled"><font><font class=""> “my $script    = '/etc/zabbix/scripts/telegram';</font></font></li>
-</ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="checked" disabled="disabled"><font><font class=""> “my $script    = '/etc/zabbix/scripts/telegram';</font></font></li></ul>
+
 <b>OBS:</b><br>
 <b>1 – </b>O usuário que você declarar no campo <i>“my $usuario”</i> precisa ter permissão no mínimo de leitura no ambiente.<br>
 <b>2 – </b> coloque o local da pasta de script do seu ambiente no local do caminho <code>/etc/zabbix/scripts/telegram</code>
@@ -118,13 +118,6 @@ Exs:<br>
 ou
 <br>
 <pre>./telegram-teste.pl Nome_Sobrenome</pre><br>
-<b>OBS:</b><br>
-<b>1 – </b>"user#123456789" e “Nome_Sobrenome” são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido em seu ambiente com os comandos já passados para realização do teste;<br>
-<b>2 – </b>Se optar por usar o ID, como "user#123456789", “user#” é para quando for usuário, quando for grupo será “chat#” seguido do respectivo ID<br><br>
-
-<!--<b>1 – </b>”123456” é um número fictício para exemplificar, busque um ItemID válido em seu ambiente para realização do teste;<br>
-<b>2 – </b>”123456789” é um número fictício para exemplificar, busque um ID válido em seu ambiente com os comandos já passados para realização do teste;<br><br>-->
-
 
 
 #Configurando o envio:
@@ -173,4 +166,3 @@ IP/DNS: {HOST.CONN}\n
 1 – Este script é para agilizar a análise e ficar visualmente mais agradável o recebimento dos alarmes.<br><br>
 2 – O script realiza uma consulta API mais ampla, detecta automaticamente se o item é de caracter/log/texto, e não envia o gráfico "sem dados" somente o texto, ele dá "ack" no evento e informa quem foi notificado naquela ação. <br><br>
 3 – Nos nomes de contatos e grupos, espaços são transformados em underscore (_), tralha/jogo da velha (#), arrobas (@) e contatos com mesmo nome tem um <i>“#1”</i>  acrescentado ao nome (exemplo: Gnu#1, Gnu#2).
-
