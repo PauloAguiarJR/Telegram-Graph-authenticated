@@ -44,7 +44,7 @@ Ex:<br>
 Ao final do download execute os comandos abaixo:
 <pre>cd Telegram-Graph-authenticated ; unzip telegram.zip ; sudo rm -rf README.md ; sudo rm -rf telegram.zip ; cd telegram ; sudo chmod +x telegram-cli ; cd ..</pre>
 
-Copie o script e os arquivos para a pasta de scripts do ZABBIX:
+Copie os arquivos para a pasta de scripts do ZABBIX:
 <pre>sudo cp -R telegram* PASTA_DE_SCRIPT_DO_ZABBIX</pre>
 
 <b>OBS:</b><br>
