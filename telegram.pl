@@ -73,16 +73,20 @@ utf8::decode($ARGV[1]);
 utf8::decode($body);
 
 my $valor;
-chdir($script) || die "Não foi possivel localizar o diretório do telegram-cli:$!";
+chdir($script); #|| die "Não foi possivel localizar o diretório do telegram-cli:$!";
+        unless (chdir($script)){
+        print "<<< Pasta do telegram-cli declarada errada >>>\n";
+        exit;
+       }
 if (&tipo == 0 || &tipo == 3) {
-	$valor = `./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e 'send_photo $ARGV[0] $graph "$ARGV[1] $body"'` || die "Não foi possivel executar o telegram-cli:$!";
+	$valor = `./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e 'send_photo $ARGV[0] $graph "$ARGV[1] $body"'`;
         unless (grep (m/FAIL/, $valor)) {
 		&ack; 
 		&logout;
 	}
 }
 else {
-        $valor = `./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e 'msg $ARGV[0] "$ARGV[1] $body"'` || die "Não foi possivel executar o telegram-cli:$!";
+        $valor = `./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e 'msg $ARGV[0] "$ARGV[1] $body"'`;
         unless (grep (m/FAIL/, $valor)) {
 		&ack; 
 		&logout;
@@ -104,7 +108,15 @@ sub tipo {
 
 	$response = $client->call("$server_ip/api_jsonrpc.php", $json);
 	#print Dumper ($response);
-	
+	unless ($response){
+    print "<<< URL declarada para o front errada >>>\n";
+    exit;
+    }
+        unless ($response->content->{'result'}){
+        print "<<< Usuário ou senha inválido >>>\n";
+        exit;
+        }	
+		
 	$authID = $response->content->{'result'};
 	$itemid =~ s/^\s+//;
 
@@ -121,11 +133,16 @@ sub tipo {
 	$response = $client->call("$server_ip/api_jsonrpc.php", $json);
 	#print Dumper ($response);
 	
-	my $itemtype; 
-	foreach my $get_itemtype (@{$response->content->{result}}) {	
-		$itemtype = $get_itemtype->{value_type}
-	}
-	return $itemtype;
+        my $itemtype;
+        foreach my $get_itemtype (@{$response->content->{result}}) {
+                $itemtype = $get_itemtype->{value_type}
+        }
+        unless ($itemtype){
+                print "<<< Item inválido ou USER do front sem permissão de leituta no host >>>\n";
+                exit;
+        }
+
+        return $itemtype;
 }
 
 sub ack {
