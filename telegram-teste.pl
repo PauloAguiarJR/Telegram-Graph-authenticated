@@ -72,7 +72,13 @@ $image->close;
 utf8::decode($subject);
 utf8::decode($body);
 
-chdir($script) || die "Não foi possivel localizar o diretório do telegram-cli:$!";
+chop($script) while ($script =~ m/^.*\/$/);
+
+chdir($script); #|| die "Não foi possivel localizar o diretório do telegram-cli:$!";
+        unless (chdir($script)){
+        print "<<< Pasta do telegram-cli declarada errada >>>\n";
+        exit;
+       }
 if (&tipo == 0 || &tipo == 3) {
 				`./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e "send_photo $ARGV[0] $graph $subject $body"` || die "Não foi possivel executar o telegram-cli:$!";
 }

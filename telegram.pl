@@ -72,6 +72,8 @@ $image->close;
 utf8::decode($ARGV[1]);
 utf8::decode($body);
 
+chop($script) while ($script =~ m/^.*\/$/);
+
 my $valor;
 chdir($script); #|| die "Não foi possivel localizar o diretório do telegram-cli:$!";
         unless (chdir($script)){
