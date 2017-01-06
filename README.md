@@ -14,10 +14,7 @@ Ex:<br>
 <blockquote> <p>Debian/Ubuntu</p> </blockquote>
 <b>1.1a </b><pre>$ sudo apt-get install libreadline-dev libconfig-dev libssl-dev libevent-dev libjansson-dev libpython-dev libpython3-all-dev liblua5.2-0 git unzip make<br></pre>
 
-<!--<b>1.2a </b><pre>$ sudo cpan</pre>
-<b>1.3a </b><pre> cpan[1]> install WWW::Mechanize JSON::RPC::Client</pre>
-<b>1.4a </b>Depois “exit” para sair. -->
-
+<!--<pre> sudo yum install perl-WWW-Mechanize perl-MIME-Lite perl-JSON-RPC </pre>-->
 
 <blockquote> <p>CentOS 6.x e 7</p> </blockquote>
 <b>1.1b </b><pre>sudo yum install epel-release</pre>
@@ -28,7 +25,6 @@ Ex:<br>
 <b>1.6b </b>Depois “exit” para sair. -->
 <b>1.4b </b><pre>ln -s /usr/lib64/liblua-5.1.so /usr/lib64/liblua5.2.so.0 ; ln -s /usr/lib64/libcrypto.so.0.9.8e /usr/lib64/libcrypto.so.1.0.0</pre>
 
-<!--<pre> sudo yum install openssl098e.x86_64 python34-libs libconfig-devel readline-devel libevent-devel lua-devel python-devel unzip git make perl-WWW-Mechanize perl-MIME-Lite perl-JSON-RPC </pre>-->
 
 <br>
 <b>2 – </b>Depois faça o download do módulos abaixo:
