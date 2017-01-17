@@ -14,7 +14,12 @@ Ex:<br>
 <blockquote> <p>Debian/Ubuntu</p> </blockquote>
 <b>1.1a </b><pre>$ sudo apt-get install libreadline-dev libconfig-dev libssl-dev libevent-dev libjansson-dev libpython-dev libpython3-all-dev liblua5.2-0 git unzip make<br></pre>
 
-<!--<pre> sudo yum install perl-WWW-Mechanize perl-MIME-Lite perl-JSON-RPC </pre>-->
+
+<!--<blockquote> <p> Debian/Ubuntu</p> </blockquote>
+<pre>$ sudo apt-get install libmime-lite-perl libwww-mechanize-perl libjson-rpc-perl<br></pre>
+<blockquote> <p>CentOS 6.x e 7</p> </blockquote>
+<pre>yum install perl-MIME-Lite perl-WWW-Mechanize perl-JSON-RPC</pre> -->
+
 
 <blockquote> <p>CentOS 6.x e 7</p> </blockquote>
 <b>1.1b </b><pre>sudo yum install epel-release</pre>
