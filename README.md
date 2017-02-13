@@ -6,6 +6,12 @@ Envio de alarmes no ZABBIX pelo Telegram com usuário autenticado com gráficos.
 
 O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x e 7, caso não utilize estas distros procure os pacotes descritos para sua necessidade.
 
+<!--
+#Acompanhe no Vídeo:
+[![](https://img.youtube.com/vi/3lunZIG2Q_k/0.jpg)](https://www.youtube.com/watch?v=3lunZIG2Q_k)
+
+-->
+
 #Requisitos:
 
 <b>1 – </b> Executar os comandos abaixo de acordo com sua distro:
