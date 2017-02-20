@@ -8,7 +8,7 @@ O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x
 
 #Acompanhe no Vídeo:
 
-[![](https://img.youtube.com/vi/EBTh5cU_ZXM/0.jpg)](https://youtu.be/EBTh5cU_ZXM)
+[![](https://img.youtube.com/vi/EBTh5cU_ZXM/0.jpg)](https://youtu.be/EBTh5cU_ZXM "Integração ZABBIX x Telegram com gráfico")
 
 <!--
 [![](https://img.youtube.com/vi/EBTh5cU_ZXM/0.jpg)](https://www.youtube.com/watch?v=EBTh5cU_ZXM)
