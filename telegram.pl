@@ -77,6 +77,11 @@ $image->close;
 utf8::decode($ARGV[1]);
 utf8::decode($body);
 
+$ARGV[1] =~ s/\'/\\\'/g;
+$ARGV[1] =~ s/\"/\\\"/g;
+$body =~ s/\'/\\\'/g;
+$body =~ s/\"/\\\"/g;
+
 chop($script) while ($script =~ m/^.*\/$/);
 
 my $valor;
