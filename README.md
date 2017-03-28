@@ -39,7 +39,7 @@ Ex:<br>
 <blockquote> <p>CentOS 6.x e 7</p> </blockquote>
 <b>1.1b </b><pre>sudo yum install epel-release</pre>
 <b>1.2b </b><pre>sudo yum -y update</pre>
-<b>1.3b </b><pre>sudo yum install openssl098e.x86_64 python34-libs libconfig-devel readline-devel libevent-devel lua-devel python-devel unzip git make</pre>
+<b>1.3b </b><pre>sudo yum install perl-CPAN openssl098e.x86_64 python34-libs libconfig-devel readline-devel libevent-devel lua-devel python-devel unzip git make</pre>
 <!--<b>1.4b </b><pre>$ sudo cpan</pre>
 <b>1.5b </b><pre> cpan[1]> install WWW::Mechanize JSON::RPC::Client</pre>
 <b>1.6b </b>Depois “exit” para sair. -->
