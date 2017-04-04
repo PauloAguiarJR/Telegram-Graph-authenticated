@@ -6,7 +6,7 @@ Envio de alarmes no ZABBIX pelo Telegram com usuário autenticado com gráficos.
 
 O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x e 7, caso não utilize estas distros procure os pacotes descritos para sua necessidade.
 
-#Acompanhe no Vídeo:
+# Acompanhe no Vídeo:
 
 [![](https://img.youtube.com/vi/EBTh5cU_ZXM/0.jpg)](https://youtu.be/EBTh5cU_ZXM "Integração ZABBIX x Telegram com gráfico")
 
@@ -21,7 +21,7 @@ O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x
 
 -->
 
-#Requisitos:
+# Requisitos:
 
 <b>1 – </b> Executar os comandos abaixo <code>(logado com o user zabbix)</code> de acordo com sua distro:
 <br>
@@ -118,7 +118,7 @@ Agora o telegram-cli está configurado para utilizar a sua conta. Podemos sair d
 <b>2 – </b> Por limitação da aplicação <code><i>“telegram-cli”</i></code>, ainda não é possível enviar mensagem para <b>SUPERGRUPOS</b>, pois não houve atualização depois desta novidade
 
 
-#Edite os parâmetros:
+# Edite os parâmetros:
 
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="checked" disabled="disabled"><font><font class=""> “my $server_ip” = 'http://127.0.0.1/zabbix' - URL de acesso ao FRONT com "http://" </font></font></li>
@@ -143,7 +143,7 @@ ou
 <b>1 – </b>"user#123456789" e "Nome_Sobrenome" são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido em seu ambiente com os comandos já passados para realização do teste;<br>
 <b>2 – </b>Se optar por usar o ID, como "user#123456789", “user#” é para quando for usuário, quando for grupo será “chat#” seguido do respectivo ID<br><br>
 
-#Configurando o envio:
+# Configurando o envio:
 
 Com o script adicionado no local indicado acima, precisamos realizar algumas configurações no Front do ZABBIX, no <i>"Tipo de Mídia"</i>, (em Administração  > Tipo de Mídia) e a <i>"Ação"</i> (em Configuração  > Ações).
 
@@ -185,7 +185,7 @@ IP/DNS: {HOST.CONN}\n
 <br>
 <br>
 
-#Conclusão
+# Conclusão
 
 1 – Este script é para agilizar a análise e ficar visualmente mais agradável o recebimento dos alarmes.<br><br>
 2 – O script realiza uma consulta API mais ampla, detecta automaticamente se o item é de caracter/log/texto, e não envia o gráfico "sem dados" somente o texto, ele dá "ack" no evento e informa quem foi notificado naquela ação. <br><br>
