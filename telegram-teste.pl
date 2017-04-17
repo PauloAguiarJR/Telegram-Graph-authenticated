@@ -74,6 +74,24 @@ open my $image, '>', $graph or die $!;
 $image->print($png->decoded_content);
 $image->close;
 #################################################################################################################################
+
+## Bom dia, boa tarde ou boa noite ##############################################################################################
+my $hour = strftime '%H', localtime;
+my $salutation;
+if ($hour < "12")
+{
+	$salutation = "Bom dia"; #Good Morning
+}
+elsif ($hour >= "18")
+{
+	$salutation = "Boa noite"; #Good Night
+}
+else
+{
+	$salutation = "Boa tarde"; #Good Afternoon
+}
+#################################################################################################################################
+
 utf8::decode($subject);
 utf8::decode($body);
 
@@ -85,10 +103,10 @@ chdir($script); #|| die "Não foi possivel localizar o diretório do telegram-cl
         exit;
        }
 if (&tipo == 0 || &tipo == 3) {
-				`./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e "send_photo $ARGV[0] $graph $subject $body"` || die "Não foi possivel executar o telegram-cli:$!";
+				`./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e 'send_photo $ARGV[0] $graph "$salutation $ARGV[0] \\n\\n$subject $body"'` || die "Não foi possivel executar o telegram-cli:$!";
 }
 else {
-	`./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e "msg $ARGV[0] $subject $body"` || die "Não foi possivel executar o telegram-cli:$!";
+	`./telegram-cli -k tg-server.pub -c telegram.config -WR -U zabbix -e 'msg $ARGV[0] "$salutation $ARGV[0] \\n\\n$subject $body"'` || die "Não foi possivel executar o telegram-cli:$!";
 }
 
 unlink ("$graph");
@@ -123,8 +141,7 @@ sub tipo {
 	   	method  => 'item.get',
 		params  => {
 			output => ['value_type'],
-			itemids => $itemid,
-                        webitems => $itemid
+			itemids => $itemid
      		},
    		auth => $authID,
 		id => 2
