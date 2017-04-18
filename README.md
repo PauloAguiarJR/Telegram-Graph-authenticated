@@ -190,6 +190,8 @@ IP/DNS: {HOST.CONN}\n
 1 – Este script é para agilizar a análise e ficar visualmente mais agradável o recebimento dos alarmes.<br><br>
 2 – O script realiza uma consulta API mais ampla, detecta automaticamente se o item é de caracter/log/texto, e não envia o gráfico "sem dados" somente o texto, ele dá "ack" no evento e informa quem foi notificado naquela ação. <br><br>
 3 – Nos nomes de contatos e grupos, espaços são transformados em underscore (_), tralha/jogo da velha (#), arrobas (@) e contatos com mesmo nome tem um <i>“#1”</i>  acrescentado ao nome (exemplo: Gnu#1, Gnu#2).
+<br><br><br><br>
+
 
 # Doações
 
