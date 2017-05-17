@@ -180,7 +180,7 @@ Com o script adicionado no local indicado acima, precisamos realizar algumas con
 
 <blockquote> <p>Zabbix 2.4</p> </blockquote>
 <img src="https://lh3.googleusercontent.com/-cMFxmglWDvA/V3a0YmX_apI/AAAAAAAAI38/hYdudPHkIL4mUxEKjCw7tjEPUEfz1ormgCCo/s425/TelegramType2.4.JPG"/><br><br>
-<blockquote> <p>Zabbix 3.0</p> </blockquote>
+<blockquote> <p>Zabbix 3.0 / 3.2</p> </blockquote>
 <img src="https://lh3.googleusercontent.com/-NLsIJkruJVM/V3a0Ypwn7TI/AAAAAAAAI38/0hU6LsD3AGUYQ98i0V0UIznXrFiz2KnBgCCo/s515/TelegramType3.0.JPG"/><br><br>
 
 <b>OBS:</b><br>
