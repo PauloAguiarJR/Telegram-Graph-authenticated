@@ -72,7 +72,7 @@ Ex:<br>
 <!--<b>1.4b </b><pre>$ sudo cpan</pre>
 <b>1.5b </b><pre> cpan[1]> install WWW::Mechanize JSON::RPC::Client</pre>
 <b>1.6b </b>Depois “exit” para sair. -->
-<b>1.4b </b><pre>ln -s /usr/lib64/liblua-5.1.so /usr/lib64/liblua5.2.so.0 ; ln -s /usr/lib64/libcrypto.so.0.9.8e /usr/lib64/libcrypto.so.1.0.0</pre>
+<b>1.4b </b><pre>sudo ln -s /usr/lib64/liblua-5.1.so /usr/lib64/liblua5.2.so.0 ; sudo ln -s /usr/lib64/libcrypto.so.0.9.8e /usr/lib64/libcrypto.so.1.0.0</pre>
 
 
 <br>
