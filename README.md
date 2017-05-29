@@ -52,7 +52,9 @@ O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x
 
 # Requisitos:
 
-<b>1 – </b> Executar os comandos abaixo <code>(logado com o user zabbix)</code> de acordo com sua distro:
+<b>0 – </b> <code>Estar logado com o user zabbix</code><br>
+<br>
+<b>1 – </b> Executar os comandos abaixo de acordo com sua distro:
 <br>
 Ex:<br>
 <blockquote> <p>Debian/Ubuntu</p> </blockquote>
