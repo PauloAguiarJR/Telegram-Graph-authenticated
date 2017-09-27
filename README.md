@@ -33,7 +33,7 @@ Em caso de dúvida, sugestão ou dificuldade junte-se a nós no <b>Grupo do Tele
 Envio de alarmes no ZABBIX pelo Telegram com usuário autenticado com gráficos.<br>
 <!-- O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x e 7. -->
 
-O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x e 7, caso não utilize estas distros procure os pacotes descritos para sua necessidade.
+O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian 8-9/Ubuntu 14-16 e CentOS 6.x e 7, caso não utilize estas distros procure os pacotes descritos para sua necessidade.
 
 # Acompanhe no Vídeo:
 
@@ -57,8 +57,27 @@ O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian/Ubuntu e CentOS 6.x
 <b>1 – </b> Executar os comandos abaixo de acordo com sua distro:
 <br>
 Ex:<br>
-<blockquote> <p>Debian/Ubuntu</p> </blockquote>
+<blockquote> <p>Debian 8 e 9/Ubuntu 14 e 16</p> </blockquote>
 <b>1.1a </b><pre>$ sudo apt-get install libreadline-dev libconfig-dev libssl-dev libevent-dev libjansson-dev libpython-dev libpython3-all-dev liblua5.2-0 git unzip make<br></pre>
+
+<blockquote> <p>Debian 9/Ubuntu 16</p> </blockquote>
+<b>Está mapeado 2 possiveis erros, e para corrigi-los siga os passos:</b>
+<i>(Homologados pelo amigo "Paulo Aguiar" <a href="https://t.me/aguiarpaulo" class="wikilink2" title="Conversar com ele" rel="nofollow">@aguiarpaulo)</a></i>
+<br>
+<b>Para o erro:</b>
+<br>
+"./telegram-cli —rsa-key tg-server.pub —config telegram.config
+./telegram-cli: /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0: version `OPENSSL_1.0.0' not found (required by ./telegram-cli)"
+
+<pre><b>Instale:</b>
+No Debian 9 <a href="http://ftp.debian.org/debian/pool/main/o/openssl/libssl1.0.0_1.0.2l-1~bpo8+1_amd64.deb" class="wikilink2" title="OpenSSL para Debian" rel="nofollow">este pacote</a>, no Ubuntu 16 <a href="http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.0.0_1.0.2g-1ubuntu4.6_amd64.deb" class="wikilink2" title="OpenSSL para Ubuntu" rel="nofollow">este pacote</a></pre>
+<br>
+
+<b>Para o erro:</b>
+<br>
+"./telegram-cli: error while loading shared libraries: libpython3.4m.so.1.0: cannot open shared object file: No such file or directory"
+<pre><b>Execute este comando:</b>
+sudo ln -s /usr/lib64/libpython3.4m.so.1.0 /usr/lib64/libpython3.5m.so.1.0</pre>
 
 
 <!--<blockquote> <p> Debian/Ubuntu</p> </blockquote>
