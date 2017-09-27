@@ -66,7 +66,7 @@ Ex:<br>
 <br>
 <b>Para o erro:</b>
 <br>
-"./telegram-cli —rsa-key tg-server.pub —config telegram.config
+"./telegram-cli --rsa-key tg-server.pub --config telegram.config
 ./telegram-cli: /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0: version `OPENSSL_1.0.0' not found (required by ./telegram-cli)"
 
 <pre><b>Instale:</b>
