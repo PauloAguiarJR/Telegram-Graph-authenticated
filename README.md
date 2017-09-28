@@ -54,7 +54,7 @@ O "How to" foi testado no ZABBIX 2.4, 3.0 e no 3.2 no Debian 8-9/Ubuntu 14-16 e 
 
 <b>0 – </b> Estar logado com o user zabbix<br>
 <br>
-<blockquote>Caso necessario, habilite como o comando abaixo e troque a senha:</blockquote>
+<blockquote>Caso necessário, habilite como o comando abaixo e troque a senha:</blockquote>
 <pre>sudo usermod -s /bin/bash zabbix ; sudo passwd zabbix</pre>
 
 <b>1 – </b> Executar os comandos abaixo de acordo com sua distro:
